@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrlShortner</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+</head>
+
+<body>
+    <header>
+        <div id="logo"><h1 class="logo">Short URL</h1></div>
+    </header>
+    <!-- <button type="button" id="getlist" onclick="getlist()">Get List</button> -->
+    <main>
+        <section id="urlbox">
+        <h1>Paste the URL to short</h1>
+            <form action="" method="get">
+            <div id="formurl">
+                <input type="text" name="u" id="originalurl" placeholder="Enter the link here">
+            <div id="formbutton">
+                <button type="button" onclick="postUrl()">Short Url</button>
+            </div>
+            </div>
+            </form>
+            <p class="boxtextcenter" id="demo">Use URL Shortener to create a shortened link and make it easy to remember</p>
+        </section>
+    </main>    
+
+</body>
+<script>
+    function getlist() {
+        // let p=document.getElementById('count');
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML = this.responseText;
+            }
+        };
+        // let button=document.getElementById('like');        
+        xhttp.open("GET", 'https://localhost:44309/api/urls', true);
+        xhttp.send();
+    }
+
+    function postUrl() {
+        var xhttp = new XMLHttpRequest();
+
+        // $.post('https://localhost:44309/api/urls',  
+        // { myData: 'https://learning.postman.com/docs/sending-requests/requests/' }, 
+        // function(data, status, xhttp) {
+        
+        //     $('p').append('status: ' + status + ', data: ' + data);
+
+        // }).done(function() {
+        //     alert('Request done!');
+        // })
+        // .fail(function(jqxhr, settings, ex) { alert('failed, ' + ex); });
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                const data = JSON.parse(this.responseText);
+                
+                document.getElementById("demo").innerHTML = ("https://localhost:44309/"+data.shortKey);
+                console.log(data);
+            }
+            else {
+                document.getElementById("demo").innerHTML = this.responseText;
+            }
+        };
+        const params = document.getElementById("originalurl").value;
+
+        // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        
+
+        xhttp.open("POST", "https://localhost:44309/", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(JSON.stringify(params));
+        console.log(params);
+    }
+</script>
+
+</html>
