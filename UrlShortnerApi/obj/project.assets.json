@@ -6097,11 +6097,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Sem_6\\SOC\\Project\\UrlShortnerApi\\UrlShortnerApi.csproj",
+      "projectUniqueName": "E:\\Sem_6\\SOC\\Project2\\UrlShortnerApi\\UrlShortnerApi.csproj",
       "projectName": "UrlShortnerApi",
-      "projectPath": "E:\\Sem_6\\SOC\\Project\\UrlShortnerApi\\UrlShortnerApi.csproj",
+      "projectPath": "E:\\Sem_6\\SOC\\Project2\\UrlShortnerApi\\UrlShortnerApi.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "E:\\Sem_6\\SOC\\Project\\UrlShortnerApi\\obj\\",
+      "outputPath": "E:\\Sem_6\\SOC\\Project2\\UrlShortnerApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
